@@ -43,6 +43,8 @@ void ofApp::osc208()
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    
+    videoPlayer = new ofVideoPlayer();
     seventeen.setup();
 	
 	background.load("meal/Background.png");
@@ -53,6 +55,11 @@ void ofApp::setup(){
 	table.load("meal/Table.png");
 	table.rotate90(3);
 	pot.setup();
+    
+    cout<<"setup";
+    videoPlayer->load("test.mp4");
+    //fingerMovie2.load("movies/fingers.mov");
+
 }
 
 //--------------------------------------------------------------
@@ -87,15 +94,20 @@ void ofApp::update(){
 	flying.update();
 	lady.update();
 	pot.update();
+    videoPlayer->update();
+
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-	//ofPushMatrix();
-	//ofTranslate(0, -1080);
-	//seventeen.draw();
-	//background.draw(0, 1080, 1920, 1080);
+    videoPlayer->draw(0, 0, 400, 300);
+    videoPlayer->play();
+    ofPushMatrix();
+    ofTranslate(0, -1080);
+    seventeen.draw();
+    
     background.draw(0, 0, 1920, 1080);
+    
 	score.draw();
 	flying.draw();
 	lady.draw();
@@ -109,7 +121,8 @@ void ofApp::draw(){
 		table.draw(0, 1080, 1920, 1080);
 		pot.draw();
 	}
-	//ofPopMatrix();
+    
+	ofPopMatrix();
 	
 }
 

@@ -7,6 +7,8 @@
 class ofApp : public ofBaseApp{
 
 	public:
+        ofVideoPlayer* videoPlayer;
+
 		void setup();
 		void update();
 		void draw();
@@ -49,5 +51,6 @@ class ofApp : public ofBaseApp{
 
 		ofImage background;
 		ofImage table;
+    
 
 };
