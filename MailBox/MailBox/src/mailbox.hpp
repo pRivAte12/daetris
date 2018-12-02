@@ -59,6 +59,6 @@ public:
 private:
     ofImage score[10];
     int score_count = 0;
-    const float width = 130;
+    const float width = 103;
     const float positionX = 0, positionY = 1080;
 };
