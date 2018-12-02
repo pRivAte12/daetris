@@ -3,7 +3,7 @@
 #include "ofMain.h"
 #include "ofxOsc.h"
 #include "Seventeen.hpp"
-#include "meal.hpp"
+#include "mailbox.hpp"
 class ofApp : public ofBaseApp{
 
 	public:
@@ -44,13 +44,13 @@ class ofApp : public ofBaseApp{
 		int abb;
 		int abbco;
 		Seventeen seventeen;
-		Lady lady;
-		Pot pot;
+		Girl girl;
 		Flying flying;
 		Score score;
 
 		ofImage background;
 		ofImage table;
+        ofImage mailBox;
     
 
 };
