@@ -18,19 +18,19 @@ extern inline SCREEN_STATUS operator++(SCREEN_STATUS eDOW, int)
 void Girl::setup()
 {
     // Initializing girlA
-    for ( int i = 0; i < 2; i++ )
+    for ( int i = 0; i < 3; i++ )
     {
         girlA[i].load("mailbox/GIRL" + std::to_string(i + 1) + "A.png");
         girlA[i].rotate90(3);
     }
     
     // Initializing girlB
-    for ( int i = 0; i < 2; i++ )
+    for ( int i = 0; i < 3; i++ )
     {
         girlB[i].load("mailbox/GIRL" + std::to_string(i + 1) + "B.png");
         girlB[i].rotate90(3);
     }
-    
+    count = CHANGETIME;
     index = 0;
     x = 0;
     y = 0;
@@ -39,10 +39,44 @@ void Girl::update()
 {
     bool needInitial = (prevStatus != status);
     prevStatus = status;
+    count--;
+    if ( !count )
+    {
+        cout<<"update nontag !count"<<endl;
+        
+        index++;
+        count = CHANGETIME;
+        if ( index >= 3 )
+        {
+            index = 0;
+        }
+    }
+    x = 0; y = 1080;
+    /*
     switch ( status )
     {
-        case NONTAG: index = 0; x = 0; y = 1080; break;
-        case FIRSTTAG: index = 1; x = 0; y = 1080; break;
+        case NONTAG: {
+            cout<<"update nontag"<<endl;
+            count--;
+            if ( !count )
+            {
+                cout<<"update nontag !count"<<endl;
+
+                index++;
+                count = CHANGETIME;
+                if ( index >= 3 )
+                {
+                    index = 0;
+                }
+            }
+            x = 0; y = 1080;
+            break;
+        }
+        case FIRSTTAG: {
+            x = 0;
+            y = 1080;
+            break;
+        };
         case LASTTAG_UP: index = 2; x = 0; y = 1080; break;
         case LASTTAG_DOWN: index = 2;
             if ( needInitial )
@@ -59,11 +93,26 @@ void Girl::update()
             }
             y -= INTERVAL;
             break;
-    }
+    }*/
 }
 void Girl::draw()
 {
     // TODO
+    switch (status) {
+        case NONTAG:
+            
+            cout<<"nontag"<<endl;
+            cout<<"index"<<endl;
+            cout<<index<<endl;
+            girlA[index].draw(0,1080, 1920, 1080);
+            break;
+        case FIRSTTAG:
+            girlB[index].draw(0,1080, 1920, 1080);
+            break;
+            
+        default:
+            break;
+    }
 }
 //--------------------------------------------------------------------
 
@@ -112,3 +161,14 @@ void Score::draw()
     score[hundred].draw(positionX + 1750, 335+positionY+width*2 , width, width);
 }
 
+void HandWritingVideo::setup(){
+    
+}
+
+void HandWritingVideo::update(){
+    
+}
+
+void HandWritingVideo::draw(){
+    
+}

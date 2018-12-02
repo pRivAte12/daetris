@@ -43,16 +43,14 @@ void ofApp::osc208()
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    
     videoPlayer = new ofVideoPlayer();
-    seventeen.setup();
 	
 	background.load("mailbox/Background.png");
 	background.rotate90(3);
     
 	score.setup();
 	flying.setup();
-	//girl.setup();
+	girl.setup();
     mailBox.load("mailbox/MAILBOX.png");
     mailBox.rotate90(3);
 	table.load("mailbox/TABLE.png");
@@ -97,7 +95,6 @@ void ofApp::update(){
 		score.onTagged();
 	}
 
-	seventeen.update();
 	flying.update();
 	girl.update();
     videoPlayer->update();
@@ -108,7 +105,7 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    /*
+    
     cout<<"height" <<endl;
     cout<<ofGetWidth()<<endl;
     //videoPlayer->draw(0, 0, 400, 300);
@@ -121,17 +118,28 @@ void ofApp::draw(){
     
 	score.draw();
 	//flying.draw();
-	girl.draw();
     mailBox.draw(0, 1080, 1920, 1080);
+    girl.draw();
+
     table.draw(0, 1080, 1920, 1080);
-    message.draw(0,1080,1920,1080);
-     
-     */
-    mailInfo.draw();
+    
+    switch (status){
+        case NONTAG:{
+            message.draw(0,1080,1920,1080);
+            break;
+        }
+        case FIRSTTAG:{
+            //손글씨 영상 재생
+            break;
+        }
+        
+    }
     
 
+    // 두번째 화면
+    //mailInfo.draw();
 
-	//ofPopMatrix();
+	ofPopMatrix();
 	
 }
 
