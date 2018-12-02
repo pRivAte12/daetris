@@ -31,7 +31,7 @@ private:
     ofImage girlA[3];
     ofImage girlB[3];
     int index; // 0 -> A 1 -> B
-    int count;
+    int isChanged;
     const int CHANGETIME = 100;
     float x, y;
     SCREEN_STATUS prevStatus = NONTAG;
