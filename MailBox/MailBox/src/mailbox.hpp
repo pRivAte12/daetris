@@ -72,7 +72,22 @@ public:
     void update();
     void draw();
 private:
-    ofVideoPlayer* mailVideo;
+    ofVideoPlayer* writingVideo;
     int index;
     int flag;
-}
+};
+
+class Mail
+{
+public:
+    void setup();
+    void update();
+    void draw();
+    void move();
+    void onTagged();
+private:
+    ofImage mail;
+    int x, y;
+    const float INTERVAL = 6;
+    bool isTagged = false;
+};

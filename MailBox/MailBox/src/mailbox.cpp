@@ -163,12 +163,61 @@ void Score::draw()
 
 void HandWritingVideo::setup(){
     
+    writingVideo = new ofVideoPlayer;
+    writingVideo->load("mailbox/writing/output.mov");
+    writingVideo->setLoopState(OF_LOOP_NONE);
+    
 }
 
 void HandWritingVideo::update(){
-    
+    writingVideo->update();
 }
 
 void HandWritingVideo::draw(){
+    //writingVideo->draw(0, 1080);
+    ofRotate(270);
+    writingVideo->draw(-945, 1010, 880, 635);
     
+    //writingVideo->draw(0, 1080);
+}
+
+void Mail::setup()
+{
+    mail.load("mailbox/MAIL.png");
+    mail.rotate90(3);
+    x = 0;
+    y = 0;
+}
+
+void Mail::update()
+{
+    mail.update();
+    if ( isTagged )
+    {
+        move();
+    }
+    
+}
+void Mail::draw()
+{
+    mail.draw(x, y + 1080, 1920, 1080);
+}
+void Mail::move()
+{
+    if( y < 280)
+    {
+        y += INTERVAL;
+    }
+    if ( y >= 280 && x < 900)
+    {
+        x += INTERVAL;
+        
+    }
+    
+    
+    
+}
+void Mail::onTagged()
+{
+    isTagged = true;
 }
