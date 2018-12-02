@@ -72,9 +72,12 @@ public:
     void update();
     void draw();
 private:
-    ofVideoPlayer* writingVideo;
+    ofImage writingVideo[10];
     int index;
     int flag;
+    int count;
+    int isChanged;
+    const int CHANGETIME = 500;
 };
 
 class Mail

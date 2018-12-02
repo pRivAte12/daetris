@@ -57,6 +57,8 @@ void ofApp::setup(){
 	table.rotate90(3);
     message.load("mailbox/MESSAGE.png");
     message.rotate90(3);
+    letterBackground.load("mailbox/letterbackground.png");
+    letterBackground.rotate90(3);
     
     cout<<"setup";
 
@@ -65,6 +67,9 @@ void ofApp::setup(){
     
     background.load("mailbox/Background.png");
     background.rotate90(3);
+    
+    handWritingVideo.setup();
+    mailImage.setup();
 }
 
 //--------------------------------------------------------------
@@ -91,7 +96,6 @@ void ofApp::update(){
 		case FIRSTTAG: status = LASTTAG_UP; break;
 		default: break;
 		}
-
 		score.onTagged();
 	}
 
@@ -99,8 +103,18 @@ void ofApp::update(){
 	girl.update();
     videoPlayer->update();
     mailInfo.update();
-
-
+    
+    switch (status) {
+        case FIRSTTAG:
+            handWritingVideo.update();
+            break;
+        case LASTTAG_UP:
+            mailImage.update();
+            break;
+                
+        default:
+            break;
+    }
 }
 
 //--------------------------------------------------------------
@@ -116,13 +130,13 @@ void ofApp::draw(){
     //seventeen.draw();
 
     
-	score.draw();
 	//flying.draw();
     mailBox.draw(0, 1080, 1920, 1080);
     girl.draw();
 
     table.draw(0, 1080, 1920, 1080);
-    
+    score.draw();
+
     switch (status){
         case NONTAG:{
             message.draw(0,1080,1920,1080);
@@ -130,15 +144,20 @@ void ofApp::draw(){
         }
         case FIRSTTAG:{
             //손글씨 영상 재생
+            letterBackground.draw(0,1080, 1920,1080);
+            handWritingVideo.draw();
+            break;
+        }
+        case LASTTAG_UP:{
+            letterBackground.draw(0,1080, 1920,1080);
+            mailImage.draw();
             break;
         }
         
     }
-    
-
     // 두번째 화면
     //mailInfo.draw();
-
+    
 	ofPopMatrix();
 	
 }
