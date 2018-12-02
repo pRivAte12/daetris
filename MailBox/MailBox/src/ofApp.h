@@ -46,8 +46,8 @@ class ofApp : public ofBaseApp{
 		int abbco;
     
         MailInfo mailInfo;
-    
-		Seventeen seventeen;
+        HandWritingVideo handWritingVideo;
+        Mail mailImage;
 		Girl girl;
 		Flying flying;
 		Score score;
@@ -56,6 +56,6 @@ class ofApp : public ofBaseApp{
 		ofImage table;
         ofImage mailBox;
         ofImage message;
-    
+        ofImage letterBackground;
 
 };
