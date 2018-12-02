@@ -52,7 +52,7 @@ void ofApp::setup(){
     
 	score.setup();
 	flying.setup();
-	girl.setup();
+	//girl.setup();
     mailBox.load("mailbox/MAILBOX.png");
     mailBox.rotate90(3);
 	table.load("mailbox/TABLE.png");
@@ -63,7 +63,10 @@ void ofApp::setup(){
     cout<<"setup";
 
     //fingerMovie2.load("movies/fingers.mov");
-
+    mailInfo.setup();
+    
+    background.load("mailbox/Background.png");
+    background.rotate90(3);
 }
 
 //--------------------------------------------------------------
@@ -98,11 +101,14 @@ void ofApp::update(){
 	flying.update();
 	girl.update();
     videoPlayer->update();
+    mailInfo.update();
+
 
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+    /*
     cout<<"height" <<endl;
     cout<<ofGetWidth()<<endl;
     //videoPlayer->draw(0, 0, 400, 300);
@@ -119,6 +125,11 @@ void ofApp::draw(){
     mailBox.draw(0, 1080, 1920, 1080);
     table.draw(0, 1080, 1920, 1080);
     message.draw(0,1080,1920,1080);
+     
+     */
+    mailInfo.draw();
+    
+
 
 	//ofPopMatrix();
 	

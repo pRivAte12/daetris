@@ -4,6 +4,7 @@
 #include "ofxOsc.h"
 #include "Seventeen.hpp"
 #include "mailbox.hpp"
+#include "mailInfo.hpp"
 class ofApp : public ofBaseApp{
 
 	public:
@@ -43,6 +44,9 @@ class ofApp : public ofBaseApp{
 		int mbangsw;
 		int abb;
 		int abbco;
+    
+        MailInfo mailInfo;
+    
 		Seventeen seventeen;
 		Girl girl;
 		Flying flying;
