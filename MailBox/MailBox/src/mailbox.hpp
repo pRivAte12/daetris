@@ -31,6 +31,7 @@ private:
     ofImage girlA[3];
     ofImage girlB[3];
     int index; // 0 -> A 1 -> B
+    int count;
     int isChanged;
     const int CHANGETIME = 100;
     float x, y;
@@ -64,3 +65,14 @@ private:
     const float width = 103;
     const float positionX = 0, positionY = 1080;
 };
+
+class HandWritingVideo{
+public:
+    void setup();
+    void update();
+    void draw();
+private:
+    ofVideoPlayer* mailVideo;
+    int index;
+    int flag;
+}
