@@ -90,7 +90,7 @@ void Score::setup()
 {
     for ( int i = 0; i < 10; i++ )
     {
-        score[i].load("meal/" + std::to_string(i) + ".png");
+        score[i].load("mailbox/" + std::to_string(i) + ".png");
         score[i].rotate90(3);
     }
     
@@ -107,8 +107,8 @@ void Score::draw()
     int ten = (score_count - hundred * 100) / 10;
     int one = (score_count - hundred * 100 - ten * 10);
     
-    score[one].draw(positionX, 1080+positionY, width, width);
-    score[ten].draw(positionX, 1080+positionY+width, width, width);
-    score[hundred].draw(positionX, 1080+positionY+width*2 , width, width);
+    score[one].draw(positionX + 1750, 335+positionY, width, width);
+    score[ten].draw(positionX + 1750, 335+positionY+width, width, width);
+    score[hundred].draw(positionX + 1750, 335+positionY+width*2 , width, width);
 }
 
