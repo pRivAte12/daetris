@@ -57,6 +57,8 @@ void ofApp::setup(){
     mailBox.rotate90(3);
 	table.load("mailbox/TABLE.png");
 	table.rotate90(3);
+    message.load("mailbox/MESSAGE.png");
+    message.rotate90(3);
     
     cout<<"setup";
 
@@ -112,10 +114,11 @@ void ofApp::draw(){
 
     
 	score.draw();
-	flying.draw();
+	//flying.draw();
 	girl.draw();
     mailBox.draw(0, 1080, 1920, 1080);
     table.draw(0, 1080, 1920, 1080);
+    message.draw(0,1080,1920,1080);
 
 	//ofPopMatrix();
 	

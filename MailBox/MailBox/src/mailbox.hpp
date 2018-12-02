@@ -30,8 +30,7 @@ public:
 private:
     ofImage girlA[2];
     ofImage girlB[2];
-    ofImage girlC[2];
-    int index; // 0 -> A 1 -> B 2 -> C
+    int index; // 0 -> A 1 -> B
     float x, y;
     SCREEN_STATUS prevStatus = NONTAG;
     

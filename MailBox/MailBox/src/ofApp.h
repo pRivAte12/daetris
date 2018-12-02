@@ -51,6 +51,7 @@ class ofApp : public ofBaseApp{
 		ofImage background;
 		ofImage table;
         ofImage mailBox;
+        ofImage message;
     
 
 };

@@ -31,13 +31,6 @@ void Girl::setup()
         girlB[i].rotate90(3);
     }
     
-    // Initializing girlC
-    
-    for ( int i = 0; i < 3; i++ )
-    {
-        girlC[i].load("mailbox/GIRL" + std::to_string(i + 1) + "C.png");
-        girlC[i].rotate90(3);
-    }
     index = 0;
     x = 0;
     y = 0;
