@@ -28,9 +28,11 @@ public:
     void draw();
     
 private:
-    ofImage girlA[2];
-    ofImage girlB[2];
+    ofImage girlA[3];
+    ofImage girlB[3];
     int index; // 0 -> A 1 -> B
+    int count;
+    const int CHANGETIME = 100;
     float x, y;
     SCREEN_STATUS prevStatus = NONTAG;
     
