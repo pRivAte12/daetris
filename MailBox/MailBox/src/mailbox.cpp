@@ -18,14 +18,14 @@ extern inline SCREEN_STATUS operator++(SCREEN_STATUS eDOW, int)
 void Girl::setup()
 {
     // Initializing girlA
-    for ( int i = 1; i <= 3; i++ )
+    for ( int i = 1; i < 3; i++ )
     {
         girlA[i].load("mailbox/GIRL" + std::to_string(i + 1) + "A.png");
         girlA[i].rotate90(3);
     }
     
     // Initializing girlB
-    for ( int i = 1; i <= 3; i++ )
+    for ( int i = 1; i < 3; i++ )
     {
         girlB[i].load("mailbox/GIRL" + std::to_string(i + 1) + "B.png");
         girlB[i].rotate90(3);
