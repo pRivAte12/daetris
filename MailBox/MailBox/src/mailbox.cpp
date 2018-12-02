@@ -42,8 +42,6 @@ void Girl::update()
     count--;
     if ( !count )
     {
-        cout<<"update nontag !count"<<endl;
-        
         index++;
         count = CHANGETIME;
         if ( index >= 3 )
@@ -100,16 +98,14 @@ void Girl::draw()
     // TODO
     switch (status) {
         case NONTAG:
-            
-            cout<<"nontag"<<endl;
-            cout<<"index"<<endl;
-            cout<<index<<endl;
             girlA[index].draw(0,1080, 1920, 1080);
             break;
         case FIRSTTAG:
             girlB[index].draw(0,1080, 1920, 1080);
             break;
-            
+        case LASTTAG_UP:
+            girlA[index].draw(0,1080, 1920, 1080);
+            break;
         default:
             break;
     }
@@ -163,22 +159,34 @@ void Score::draw()
 
 void HandWritingVideo::setup(){
     
-    writingVideo = new ofVideoPlayer;
-    writingVideo->load("mailbox/writing/output.mov");
-    writingVideo->setLoopState(OF_LOOP_NONE);
-    
+    // Initializing girlA
+    for ( int i = 0; i < 10; i++ )
+    {
+        writingVideo[i].load("mailbox/writing/0" + std::to_string(i + 1) + ".png");
+        //writingVideo[i].rotate90();
+    }
+    index = 0;
+    count = CHANGETIME;
 }
 
 void HandWritingVideo::update(){
-    writingVideo->update();
+    count--;
+    if ( !count )
+    {
+        cout<<"!count"<<endl;
+        count = CHANGETIME;
+        status = LASTTAG_UP;
+        index++;
+        if(index == 10){
+            index=0;
+        }
+        //writingVideo[0].clear();
+    }
+    
 }
 
 void HandWritingVideo::draw(){
-    //writingVideo->draw(0, 1080);
-    ofRotate(270);
-    writingVideo->draw(-945, 1010, 880, 635);
-    
-    //writingVideo->draw(0, 1080);
+    writingVideo[index].draw(200,1200, 300, 1000);
 }
 
 void Mail::setup()
@@ -192,11 +200,13 @@ void Mail::setup()
 void Mail::update()
 {
     mail.update();
+    move();
+    /*
     if ( isTagged )
     {
         move();
     }
-    
+    */
 }
 void Mail::draw()
 {
@@ -211,10 +221,14 @@ void Mail::move()
     if ( y >= 280 && x < 900)
     {
         x += INTERVAL;
-        
     }
-    
-    
+    cout<<"x"<<endl;
+    cout<<x<<endl;
+    if (x >= 900){
+        x=0;
+        y=0;
+        status = NONTAG;
+    }
     
 }
 void Mail::onTagged()
